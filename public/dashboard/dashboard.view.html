@@ -1,0 +1,165 @@
+<div class="text-center">
+    <br/>
+<img src="/images/QUANT_BLACK_trans_small.png"/><br/>
+    <h1>Trade Server Dashboard</h1><br/>
+</div>
+<hr/>
+<div class="card" ng-if="vm.checkCred">
+    <div class="card-body text-center h3">
+        Checking Quant Black credentials
+    </div>
+</div>
+<div ng-if="vm.user">
+    <div class="clearfix">
+        <button class="btn btn-danger btn-sm float-right" ng-disabled="vm.updating" ng-click="vm.logout()"><span>Logout</span></button>
+        <span class="font-weight-bold">{{vm.user.email}}</span>
+    </div>
+</div>
+<br/>
+<div class="card" ng-if="!vm.user && !vm.checkCred">
+    <div class="card-header font-weight-bold">
+        Quant Black Login Required
+    </div>
+    <div class="card-body">
+        <form name="form">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="email" id="staticEmail" value="Quant Black Email"  ng-model="vm.cred.qbUsername" required>
+                </div>
+                <span class="error-text" ng-show="form.email.$touched && !form.email.$valid">Invalid Email</span>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Quant Black Password" ng-model="vm.cred.qbPassword" required>
+                </div>
+                <span class="error-text" ng-show="form.password.$touched && !form.password.$valid">Password is required</span>
+            </div>
+
+            <span class="error-text" ng-bind="vm.login_error"></span>
+            <br/>
+            <button class="btn btn-success" ng-disabled="vm.updating" ng-click="vm.connect()"><span>Login</span></button><span ng-if="vm.updating"> Please wait ...</span>
+        </form>
+    </div>
+</div>
+<div class="card" ng-if="vm.user">
+    <div class="card-header font-weight-bold">
+        MT4 Controller
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Broker</th>
+                <th>Account Type</th>
+                <th>Description</th>
+                <th>Program Path</th>
+                <th>Program Data Path</th>
+                <th>Status</th>
+                <th>Activate</th>
+                <th ng-if="instance.edit"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat = "(key,instance) in vm.instances">
+                <td><span class="btn btn-info" ng-if="instance.edit" ng-click="instance.edit = false">View</span><span class="btn btn-info" ng-if="!instance.edit" ng-click="instance.edit = true">Edit</span></td>
+                <td ng-if="instance.edit"><input type="text" class="form-control" name="broker" placeholder="Broker"  ng-model="instance.broker" ng-change="vm.update(key, 'broker', instance.broker)"/></td>
+                <td ng-if="instance.edit"><input type="text" class="form-control" name="type" placeholder="Type"  ng-model="instance.type" ng-change="vm.update(key, 'type', instance.type)"/></td>
+                <td ng-if="instance.edit"><input type="text" class="form-control" name="desc" placeholder="Description"  ng-model="instance.description" ng-change="vm.update(key, 'description', instance.description)"/></td>
+                <td ng-if="instance.edit"><input type="text" class="form-control" name="mt4Path" placeholder="MT4 executable"  ng-model="instance.mt4Path" ng-change="vm.update(key, 'mt4Path', instance.mt4Path)"/></td>
+                <td ng-if="instance.edit"><input type="text" class="form-control" name="mt4Data" placeholder="MT4 data"  ng-model="instance.mt4DataPath" ng-change="vm.update(key, 'mt4DataPath', instance.mt4DataPath)"/></td>
+
+
+                <td ng-if="!instance.edit">{{instance.broker}}</td>
+                <td ng-if="!instance.edit" ng-class="{'text-success': instance.type == 'Live', 'font-weight-bold': instance.type == 'Live'}">{{instance.type}}</td>
+                <td ng-if="!instance.edit">{{instance.description}}</td>
+                <td ng-if="!instance.edit">Click edit to view</td>
+                <td ng-if="!instance.edit">click edit to view</td>
+
+                <td ng-class="{'text-success': instance.active && instance.started, 'text-danger': instance.active && !instance.started, 'font-weight-bold': instance.active}"><span ng-if="instance.started">RUNNING</span><span ng-if="!instance.started">STOPPED</span></td>
+                <td ng-if="instance.active"><span class="btn btn-danger" ng-click="vm.stop(key)" ng-disabled="vm.updating">DE-ACTIVATE</span></td>
+                <td ng-if="!instance.active"><span class="btn btn-success" ng-click="vm.launch(key)" ng-disabled="vm.updating">ACTIVATE</span><div ng-if="instance.edit"><a href ng-click="vm.remove(key)">Remove</a></div></td>
+
+            </tr>
+            </tbody>
+        </table>
+        <br/>
+        <hr/>
+        <div class="card">
+            <div class="card-header">
+                Add New MT4 Instance
+            </div>
+            <div class="card-body">
+                <form ng-submit="vm.addNew()" name="form">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Broker</th>
+                        <th>Account Type</th>
+                        <th>Description</th>
+                        <th>Program Path</th>
+                        <th>Program Data Path</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" name="broker" placeholder="Broker"  ng-model="vm.instance.broker" required/></td>
+                        <td><input type="text" class="form-control" name="type" placeholder="Type"  ng-model="vm.instance.type" required/></td>
+                        <td><input type="text" class="form-control" name="desc" placeholder="Description"  ng-model="vm.instance.description" required/></td>
+                        <td><input type="text" class="form-control" name="mt4Path" placeholder="MT4 executable" ng-model="vm.instance.mt4Path" required/></td>
+                        <td><input type="text" class="form-control" name="mt4Data" placeholder="MT4 data" ng-model="vm.instance.mt4DataPath" required/></td>
+                        <td><button type="submit" class="btn btn-success" ng-disabled="vm.updating">Add New Instance</button></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="card">
+    <div class="card-header font-weight-bold">
+        Set New Trade Server Password
+    </div>
+    <div class="card-body">
+        This will change the password of this Trade Server (not the Quant Black password).<br/><br/>
+        This password can't be recovered and is required to login to the trade server by remote desktop connection.<br/><br/>
+        If you lose this password you will need to recreate a new Quant Black Trade Server
+        <br/><br/>
+        <form name="server" ng-submit="vm.changeServerPassword()">
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="serverPassword" name="password" placeholder="Server Password" ng-model="vm.serverPassword" required>
+                </div>
+                <span class="error-text" ng-show="server.password.$touched && !server.password.$valid">Password is required</span>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="serverPassword2" name="password2" placeholder="Confirm Password" ng-model="vm.serverPassword2" required>
+                </div>
+                <span class="error-text" ng-show="server.password2.$touched && !server.password2.$valid">Password is required</span>
+            </div>
+            <br/>
+            <div class="float-right">
+                <span ng-if="vm.passwordChanging"> Please wait ...</span>
+                <span class="text-danger" ng-bind="vm.serverPassError"></span>
+                <span class="text-success" ng-if="vm.serverPasswordSuccess">Password changed!</span>
+                <button class="btn btn-success" ng-disabled="vm.passwordChanging" type="submit"><span>Change Password</span></button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<br/><br/>
+    <div class="h6" ng-if="vm.status != 200">
+    Status {{vm.status}}: {{vm.response}}<br/>
+    <br/>
+</div>
