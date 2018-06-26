@@ -4,6 +4,7 @@ var dataObj = require('./firebase-data');
 var im = require('./instance_manager');
 var https = require('https');
 var fs = require('fs');
+var err_log = require('../common/error_logger');
 
 var loginSuccess = null;
 
@@ -186,7 +187,7 @@ module.exports.setAuthStateChanged = function() {
                 });
 
             }, function(err) {
-                console.log("ERROR: Could not download QB Manager Settings!");
+                err_log.log("ERROR: Could not download QB Manager Settings! " + err);
             });
 
 
@@ -205,7 +206,7 @@ module.exports.login = function(cred, onSuccess) {
     dataObj.data.cred = cred;
 
     firebase.auth().signInWithEmailAndPassword(cred.qbUsername, cred.qbPassword).catch(function (err) {
-        console.log(err.message);
+        err_log.log(err.message);
     });
 
 
@@ -219,9 +220,18 @@ module.exports.updateInstanceState = function(key, field, state) {
 module.exports.getInstanceEAs = function(key, onSuccess) {
     firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas/' + key).once('value')
         .then(function(snapshot) {
-            if(snapshot.exists() && onSuccess)
+            if(onSuccess)
                 onSuccess(snapshot.val());
         });
+};
+
+module.exports.send_error = function(error)
+{
+    if(dataObj.data.user) {
+        var ref = firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager');
+        var key = ref.child('errors').push().getKey();
+        ref.child('errors/' + key).set(error);
+    }
 };
 
 function eaDownloaded(strategyKey, fileLocation, dest, qbManagerUpdate)
@@ -290,7 +300,7 @@ function downloadEA(key, strategy, qbManagerUpdate) {
         });
     }).on('error', function(err) { // Handle errors
         fs.unlink(file); // Delete the file async. (But we don't check the result)
-        console.log(err.message);
+        err_log.log(err.message);
     });
 }
 

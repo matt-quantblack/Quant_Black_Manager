@@ -1,5 +1,6 @@
 var fs = require('fs');
 var fbManager = require('../common/firebase-manager');
+var err_log = require('../common/error_logger');
 
 function createChartFile(dir, eaNo, symbol, period, ea_name, username, password) {
 
@@ -24,7 +25,7 @@ function createChartFile(dir, eaNo, symbol, period, ea_name, username, password)
             num = '0' + eaNo;
 
         fs.writeFile(dir + '\\chart' + num + '.chr', data, function(err) {
-            if(err) console.log('Error saving profile chart ' + ea_name + ': ' + err);
+            if(err) err_log.log('Error saving profile chart ' + ea_name + ': ' + err);
         });
     });
 }
@@ -32,12 +33,12 @@ function createChartFile(dir, eaNo, symbol, period, ea_name, username, password)
 function clearDirectory(dirname) {
     fs.readdir(dirname, function(err, filenames) {
         if (err) {
-            console.log('Error reading profile directory: ' + err);
+            err_log.log('Error reading profile directory: ' + err);
             return;
         }
         filenames.forEach(function(filename) {
             fs.unlink(dirname + '\\' + filename, (err) => {
-                if (err) console.log('Error clearing profile chart: ' + err);
+                if (err) err_log.log('Error clearing profile chart: ' + err);
             });
         });
     });
@@ -55,9 +56,11 @@ module.exports.createProfile = function(dataPath, instanceEAs) {
 
        var eaNo = 1;
 
-       instanceEAs.forEach(function (ea) {
-           createChartFile(dir, eaNo++, ea.symbol, ea.period, ea.ea_name, uname, pword);
-       });
+       if(instanceEAs) {
+           instanceEAs.forEach(function (ea) {
+               createChartFile(dir, eaNo++, ea.symbol, ea.period, ea.ea_name, uname, pword);
+           });
+       }
    }
 
 };
@@ -80,7 +83,7 @@ module.exports.startInstance = function(key, instance) {
         }
         catch(err)
         {
-            console.log("Error: launch failed for " + instance.mt4Path + " " + err);
+            err_log.log("Error: launch failed for " + instance.mt4Path + " " + err);
         }
 
         if(child) {
@@ -95,7 +98,7 @@ module.exports.startInstance = function(key, instance) {
             });
 
             child.on('error', function (err) {
-                console.log('Instance error: ' + err);
+                err_log.log('Instance error: ' + err);
             });
 
             console.log("Loaded instance " + instance.mt4Path);
@@ -119,6 +122,6 @@ module.exports.stopInstance = function(key, instance) {
     }
     catch(err)
     {
-        console.log("Error: could not shutdown " + instance.mt4Path + " " + err);
+        err_log.log("Error: could not shutdown " + instance.mt4Path + " " + err);
     }
 };

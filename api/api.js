@@ -1,6 +1,6 @@
 var fbManager = require('../common/firebase-manager');
 var fs = require('fs');
-
+var err_log = require('../common/error_logger');
 
 
 module.exports.loggedIn = function(req, res) {
@@ -28,13 +28,14 @@ module.exports.connect = function(req, res) {
             //save the credentials
             console.log('Writing credentials to ' + '.\\qb_cred.dat');
             fs.writeFile('.\\qb_cred.dat', JSON.stringify(cred), function(err) {
-                if(err) console.log('Error saving credentials : ' + err);
+                if(err) err_log.log('Error saving credentials : ' + err);
             });
 
             res.status = 200;
             res.json({'success': true});
         })
     } catch(err) {
+        err_log.log(err);
         res.status(400);
         res.json({error: 'Bad post data: ' + err});
     }
@@ -54,15 +55,17 @@ module.exports.logout = function(req, res) {
 
             }
             catch(err) {
-                console.log(err);
+                err_log.log(err);
             }
             res.status = 200;
             res.json({'success': true});
         }, function(err) {
+            err_log.log(err);
             res.status(400);
             res.json({error: 'Error: ' + err});
         });
     }catch(err) {
+        err_log.log(err);
         res.status(400);
         res.json({error: 'Error: ' + err});
     }
@@ -76,6 +79,7 @@ module.exports.changeServerPassword = function(req, res) {
 
 
     } catch(err) {
+        err_log.log(err);
         res.status(400);
         res.json({error: 'Bad post data: ' + err});
     }
@@ -86,7 +90,7 @@ module.exports.changeServerPassword = function(req, res) {
 
 
         child.on('error', function (err) {
-            console.log('Error: ' + err);
+            err_log.log('Error: ' + err);
         });
 
 
@@ -95,6 +99,7 @@ module.exports.changeServerPassword = function(req, res) {
 
     }
     catch(err) {
+        err_log.log(err);
         res.status(500);
         res.json({error: 'Could not change password: ' + err});
     }
