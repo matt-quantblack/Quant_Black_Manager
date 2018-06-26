@@ -22,7 +22,7 @@
       <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
+            <state relative-caret-position="179">
               <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
             </state>
           </provider>
@@ -276,7 +276,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81778000" />
+    <option name="totallyTimeSpent" value="82177000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -289,7 +289,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.20231824" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32985386" />
@@ -577,7 +576,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
+        <state relative-caret-position="179">
           <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
         </state>
       </provider>

@@ -51,7 +51,7 @@ fbManager.setAuthStateChanged();
 
 //load from file if exists
 // Read the file and change its contents
-var filename = '.\\qb_cred.dat';
+var filename = 'qb_cred.dat';
 var cred = null;
 
 if (fs.existsSync(filename)) {
