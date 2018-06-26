@@ -50,21 +50,47 @@ module.exports.setAuthStateChanged = function() {
             //get qbManager settings
             firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager').once('value').then(function(snapshot) {
                 console.log("Downloaded QB Manager Settings");
-                dataObj.data.qbManagerSettings = snapshot.val();
+                var settings = snapshot.val();
+
+
+                if(!settings)
+                    dataObj.data.qbManagerSettings = {
+                        strategies: {},
+                        instances: {},
+                        instance_eas: {}
+                    };
+                else
+                    dataObj.data.qbManagerSettings = settings;
+
+                if(!dataObj.data.qbManagerSettings.hasOwnProperty('instances'))
+                    dataObj.data.qbManagerSettings.instances = {};
+
+                if(!dataObj.data.qbManagerSettings.hasOwnProperty('instance_eas'))
+                    dataObj.data.qbManagerSettings.instance_eas = {};
+
+                if(!dataObj.data.qbManagerSettings.hasOwnProperty('strategies'))
+                    dataObj.data.qbManagerSettings.strategies = {};
+
 
                 //listen for new versions of existing strategies if on auto update
-                if(dataObj.data.qbManagerSettings.hasOwnProperty('strategies')) {
-                    Object.keys(dataObj.data.qbManagerSettings.strategies).forEach(function(key) {
-                        if(dataObj.data.qbManagerSettings.strategies[key].autoUpdate) {
+                //first listen for any new strategies that are added in case there were none to start with
+                dataObj.data.listeners.push({
+                    path: dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/strategies',
+                    type: 'child_added',
+                    listener: firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/strategies').on('child_added', function(strategySnapshot) {
+
+                        dataObj.data.qbManagerSettings.strategies[strategySnapshot.key] = strategySnapshot.val();
+
+                        if(dataObj.data.qbManagerSettings.strategies[strategySnapshot.key].autoUpdate) {
                             dataObj.data.listeners.push({
-                                path: 'strategies/' + key + '/versions',
+                                path: 'strategies/' + strategySnapshot.key + '/versions',
                                 type: 'child_added',
                                 listener:
-                                    firebase.database().ref('strategies/' + key + '/versions').on('child_added', strategyChange)
+                                    firebase.database().ref('strategies/' + strategySnapshot.key + '/versions').on('child_added', strategyChange)
                             });
                         }
-                    });
-                }
+                    })
+                });
 
                 //listen for any new strategies added to the qb manager
                 dataObj.data.listeners.push({
@@ -74,7 +100,7 @@ module.exports.setAuthStateChanged = function() {
 
 
                 //create the default instance
-                if(!dataObj.data.qbManagerSettings.hasOwnProperty('instances')) {
+                if(Object.keys(dataObj.data.qbManagerSettings.instances).length == 0) {
                     var ref = firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager');
                     var key1 = ref.child("instances").push().getKey();
                     var key2 = ref.child("instances").push().getKey();
@@ -88,7 +114,8 @@ module.exports.setAuthStateChanged = function() {
                         description: 'Main trading account',
                         started: false,
                         active: false,
-                        mt4Path: "C:\\Program Files (x86)\\IC Markets MetaTrader 4 Live"
+                        mt4DataPath: "C:\\Users\\Administrator\\AppData\\Roaming\\MetaQuotes\\Terminal\\DB6F816F93FAFEB829F5B751EE420D72\\",
+                        mt4Path: "C:\\Program Files (x86)\\MetaTrader 4 IC Markets Live"
                     };
                     defaultInstances[key2] =  {
                         broker: 'IC Markets',
@@ -96,7 +123,8 @@ module.exports.setAuthStateChanged = function() {
                         description: 'Test account',
                         started: false,
                         active: false,
-                        mt4Path: "C:\\Program Files (x86)\\IC Markets MetaTrader 4 Demo"
+                        mt4DataPath: "C:\\Users\\Administrator\\AppData\\Roaming\\MetaQuotes\\Terminal\\092E4CE6D7B6FFE37BB5A4B3218EB174\\",
+                        mt4Path: "C:\\Program Files (x86)\\MetaTrader 4 IC Markets Demo"
                     };
                     defaultInstances[key3] =  {
                         broker: 'Pepperstone',
@@ -104,6 +132,7 @@ module.exports.setAuthStateChanged = function() {
                         description: 'Main trading account',
                         started: false,
                         active: false,
+                        mt4DataPath: "C:\\Users\\Administrator\\AppData\\Roaming\\MetaQuotes\\Terminal\\36CB4805486590409E797894D40994CD\\",
                         mt4Path: "C:\\Program Files (x86)\\Pepperstone MetaTrader 4 Live"
                     };
                     defaultInstances[key4] =  {
@@ -112,12 +141,14 @@ module.exports.setAuthStateChanged = function() {
                         description: 'Test account',
                         started: false,
                         active: false,
+                        mt4DataPath: "C:\\Users\\Administrator\\AppData\\Roaming\\MetaQuotes\\Terminal\\AF3F0D3AEBFE644DC833FA7977623A5F\\",
                         mt4Path: "C:\\Program Files (x86)\\Pepperstone MetaTrader 4 Demo"
                     };
 
-                    ref.child('instances').set(defaultInstances).then(function() {
-                        console.log("Created default instances");
-                        dataObj.data.qbManagerSettings.instances = defaultInstances;
+                    dataObj.data.qbManagerSettings.instances = defaultInstances;
+
+                    ref.set(dataObj.data.qbManagerSettings).then(function() {
+                        console.log("Created default settings");
                     })
 
                 }
@@ -163,16 +194,6 @@ module.exports.setAuthStateChanged = function() {
                             })
                     });
 
-                    //listen for any strategies that have been added to this instance
-                    var count = 0;
-                    if(dataObj.data.qbManagerSettings.hasOwnProperty('instance_eas') && dataObj.data.qbManagerSettings.instance_eas.hasOwnProperty(key))
-                        count  = dataObj.data.qbManagerSettings.instance_eas[key].length;
-                    dataObj.data.listeners.push({
-                        path: dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas/' + key,
-                        type: 'child_added',
-                        listener:
-                            firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas/' + key).orderByKey().startAt(count.toString()).on('child_added', strategyAddedToInstance)
-                    });
 
                     //listen for any restart requests
                     dataObj.data.listeners.push({
@@ -184,6 +205,34 @@ module.exports.setAuthStateChanged = function() {
                                     restartInstance(key);
                             })
                     });
+                });
+
+                //first listen for any new instance_eas that are added in case there were none to start with
+                dataObj.data.listeners.push({
+                    path: dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas',
+                    type: 'child_added',
+                    listener:
+                        firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas').on('child_added', function(ieaSnap) {
+                            dataObj.data.qbManagerSettings.instance_eas[ieaSnap.key] = ieaSnap.val();
+
+                            var count = ieaSnap.val().length.toString();
+
+                            ieaSnap.val().forEach(function(ea) {
+                                strategyAddedToInstance(ea);
+                            });
+
+                            //then listen for any strategies that have been added to this instance
+                            dataObj.data.listeners.push({
+                                path: dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas/' + ieaSnap.key,
+                                type: 'child_added',
+                                listener:
+                                    firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas/' + ieaSnap.key).orderByKey().startAt(count).on('child_added', function(stratSnap) {
+                                        dataObj.data.qbManagerSettings.instance_eas[ieaSnap.key].push(stratSnap);
+                                        strategyAddedToInstance(stratSnap.val());
+                                    })
+                            });
+
+                        })
                 });
 
             }, function(err) {
@@ -236,10 +285,10 @@ module.exports.send_error = function(error)
 
 function eaDownloaded(strategyKey, fileLocation, dest, qbManagerUpdate)
 {
-
     var updates = {};
     if(qbManagerUpdate)
         updates = qbManagerUpdate;
+
 
     //copy the file to every instance
     if(dataObj.data.qbManagerSettings.hasOwnProperty('instances'))
@@ -248,35 +297,31 @@ function eaDownloaded(strategyKey, fileLocation, dest, qbManagerUpdate)
         if(dataObj.data.qbManagerSettings.hasOwnProperty('instances')) {
             Object.keys(dataObj.data.qbManagerSettings.instances).forEach(function (key) {
                 var instance = dataObj.data.qbManagerSettings.instances[key];
-
                 var instance_eas = dataObj.data.qbManagerSettings.instance_eas[key];
 
                 if(instance_eas) {
                     instance_eas.forEach(function (val) {
                         if (instance.hasOwnProperty('mt4DataPath')) {
                             //delete any old versions of this strategy
+                            var path = instance.mt4DataPath + 'MQL4\\Experts\\' + val.filename + '.ex4';
                             if (val.strategyKey == strategyKey) {
+
                                 try {
-                                    fs.unlinkSync(dataObj.data.qbManagerSettings.instances[key].mt4DataPath + 'MQL4\\Experts\\' + val.ea_name + '.ex4');
+                                    //copy across the new one
+                                    fs.copyFileSync(fileLocation, path);
+                                    console.log('Downloaded to ' + path);
+
+                                    updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart'] = true;
                                 }
                                 catch (err) {
-                                    console.log("Could not delete " + val.ea_name + ": " + err);
+                                    err_log.log("Could not copy " + instance.mt4DataPath + dest + ": " + err);
                                 }
                             }
 
-                            try {
-                                //copy across the new one
-                                fs.copyFileSync(fileLocation, instance.mt4DataPath + dest);
-                                console.log('Downloaded to ' + instance.mt4DataPath + dest);
-
-                                updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart'] = true;
-                            }
-                            catch (err) {
-                                console.log("Could not copy " + instance.mt4DataPath + dest + ": " + err);
-                            }
                         }
                     });
                 }
+
             });
         }
     }
@@ -284,18 +329,19 @@ function eaDownloaded(strategyKey, fileLocation, dest, qbManagerUpdate)
 
 
     firebase.database().ref().update(updates);
+
 }
 
-function downloadEA(key, strategy, qbManagerUpdate) {
+function downloadEA(dest, key, strategy, qbManagerUpdate) {
 
-    var dest = './downloaded_strategies/'+ strategy.filename;
     //create a file stream in a temp location
     var file = fs.createWriteStream(dest);
+
     https.get(strategy.url, function(response) {
         response.pipe(file);
         file.on('finish', function() {
             file.close(function() {
-                eaDownloaded(key, dest, 'MQL4\\Experts\\' + strategy.filename, qbManagerUpdate);
+                eaDownloaded(key, dest, 'MQL4\\Experts\\' + strategy.filename + '.ex4', qbManagerUpdate);
             });  // close() is async, call cb after close completes.
         });
     }).on('error', function(err) { // Handle errors
@@ -305,28 +351,36 @@ function downloadEA(key, strategy, qbManagerUpdate) {
 }
 
 function strategyAdded(snapshot) {
-    console.log('Strategy added.');
+
     var strategy = snapshot.val();
 
-    var dest = './downloaded_strategies/'+ strategy.filename;
+    var dest = './downloaded_strategies/'+ strategy.filename + '.ex4';
 
     //only download this if it isn't already in the strateies list
     if(!fs.existsSync(dest)) {
-        console.log('Adding new strategy ' + snapshot.key);
+        console.log('Downloading new strategy ' + snapshot.key);
         //add to the local qb manager variable
         dataObj.data.qbManagerSettings.strategies[snapshot.key] = strategy;
         //download the strategy
-        downloadEA(snapshot.key, strategy);
+        downloadEA(dest, snapshot.key, strategy);
     }
 
 }
 
-function strategyAddedToInstance(snapshot) {
-    var strategy = snapshot.val();
 
-    //the ea should already be downloaded
-    var dest = './downloaded_strategies/'+ strategy.ea_name + '.ex4';
-    eaDownloaded(strategy.strategyKey, dest, 'MQL4\\Experts\\' + strategy.ea_name + '.ex4');
+function strategyAddedToInstance(strategy) {
+
+
+
+    if(dataObj.data && dataObj.data.hasOwnProperty('qbManagerSettings') &&
+        dataObj.data.qbManagerSettings.hasOwnProperty('strategies') &&
+        dataObj.data.qbManagerSettings.strategies.hasOwnProperty(strategy.strategyKey)) {
+
+        //the ea should already be downloaded
+        console.log("Setting up " + strategy.strategyKey  + " on instance");
+        var dest = './downloaded_strategies/' + strategy.filename + '.ex4';
+        eaDownloaded(strategy.strategyKey, dest, 'MQL4\\Experts\\' + strategy.filename + '.ex4');
+    }
 
 }
 
@@ -340,13 +394,15 @@ function strategyChange(snapshot) {
         var existingStrategy = dataObj.data.qbManagerSettings.strategies[strategyUpdate.strategyKey];
         if(existingStrategy.version < strategyUpdate.version)
         {
+            var dest = './downloaded_strategies/'+ strategyUpdate.filename + '.ex4';
+
             var updates = {};
             updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/strategies/' + strategyUpdate.strategyKey + '/version'] = strategyUpdate.version;
             updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/strategies/' + strategyUpdate.strategyKey + '/filename'] = strategyUpdate.filename;
             updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/strategies/' + strategyUpdate.strategyKey + '/url'] = strategyUpdate.url;
 
             console.log('Updating new version for strategy ' + strategyUpdate.strategyKey);
-            downloadEA(strategyUpdate.strategyKey, strategyUpdate, updates);
+            downloadEA(dest, strategyUpdate.strategyKey, strategyUpdate, updates);
         }
     }
 

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/common/instance_manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/instance_manager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/firebase-manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/firebase-manager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/downloaded_strategies/QB_AUTO_YenSquared_2_0.ex4" beforeDir="false" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="222" column="15" selection-start-line="222" selection-start-column="15" selection-end-line="222" selection-end-column="15" />
+            <state relative-caret-position="748">
+              <caret line="405" column="9" lean-forward="true" selection-start-line="405" selection-start-column="9" selection-end-line="405" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -82,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state relative-caret-position="-561">
+              <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -113,7 +115,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>panel</find>
+      <find>profiles</find>
     </findStrings>
+    <replaceStrings>
+      <replace>filename</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -135,8 +141,8 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/common/error_logger.js" />
         <option value="$PROJECT_DIR$/api/api.js" />
-        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
         <option value="$PROJECT_DIR$/common/instance_manager.js" />
+        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
       </list>
     </option>
   </component>
@@ -278,7 +284,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67699000" />
+    <option name="totallyTimeSpent" value="77672000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -562,17 +568,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
+    <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="222" column="15" selection-start-line="222" selection-start-column="15" selection-end-line="222" selection-end-column="15" />
+        <state relative-caret-position="-561">
+          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
+    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        <state relative-caret-position="748">
+          <caret line="405" column="9" lean-forward="true" selection-start-line="405" selection-start-column="9" selection-end-line="405" selection-end-column="9" />
         </state>
       </provider>
     </entry>

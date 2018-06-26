@@ -61,7 +61,7 @@ module.exports.createProfile = function(dataPath, instanceEAs) {
 
        if(instanceEAs) {
            instanceEAs.forEach(function (ea) {
-               createChartFile(dir, eaNo++, ea.symbol, ea.period, ea.ea_name, uname, pword);
+               createChartFile(dir, eaNo++, ea.symbol, ea.period, ea.filename, uname, pword);
            });
        }
    }
