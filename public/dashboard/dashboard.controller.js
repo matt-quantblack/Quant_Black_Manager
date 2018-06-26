@@ -17,8 +17,9 @@
         vm.instances = {};
 
         vm.user = null;
-        vm.updating = true;
+        vm.updating = false;
         vm.checkCred = true;
+        vm.credAvail = false;
 
         vm.cred = {
             qbUsername: '',
@@ -30,15 +31,22 @@
                 vm.status = response.status;
                 if(response.data.result) {
                     vm.cred = response.data.result;
+                    vm.credAvail = true;
 
                     //login on the front end as well
                     firebase.auth().signInWithEmailAndPassword(vm.cred.qbUsername, vm.cred.qbPassword).catch(function (err) {
                         console.log(err.message);
                     });
                 }
+                else
+                    vm.credAvail = false;
+                vm.checkCred = true;
+                if (!$scope.$$phase) $scope.$apply();
             }, function(response) {
+                vm.checkCred = false;
                 vm.status = response.data || 'Request failed';
                 vm.response = response.status;
+                if (!$scope.$$phase) $scope.$apply();
             });
 
 
@@ -47,6 +55,7 @@
             vm.checkCred = false;
             if(user) {
                 vm.user = user;
+
                 firebase.database().ref(user.uid + '/qb_manager/instances').on('child_added', function (snapshot) {
                     vm.instances[snapshot.key] = snapshot.val();
 
@@ -78,7 +87,7 @@
                 .then(function(response) {
                     //login on the front end as well
                     vm.status = response.status;
-
+                    vm.credAvail = false;
                     firebase.auth().signOut();
                 }, function(response) {
                     vm.status = response.status;
@@ -94,8 +103,11 @@
                     firebase.auth().signInWithEmailAndPassword(vm.cred.qbUsername, vm.cred.qbPassword).catch(function (err) {
                         console.log(err.message);
                     });
+                    vm.credAvail = true;
+                    vm.updating = false;
                     vm.status = response.status;
                     vm.response = response.data;
+                    if (!$scope.$$phase) $scope.$apply();
                 }, function(response) {
                     vm.status = response.status;
                     vm.response = response.data || 'Request failed';

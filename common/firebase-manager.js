@@ -53,12 +53,13 @@ module.exports.setAuthStateChanged = function() {
                 var settings = snapshot.val();
 
 
-                if(!settings)
+                if(!settings) {
                     dataObj.data.qbManagerSettings = {
                         strategies: {},
                         instances: {},
                         instance_eas: {}
                     };
+                }
                 else
                     dataObj.data.qbManagerSettings = settings;
 

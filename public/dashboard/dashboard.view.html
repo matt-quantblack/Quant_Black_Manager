@@ -9,14 +9,14 @@
         Checking Quant Black credentials
     </div>
 </div>
-<div ng-if="vm.user">
+<div ng-show="vm.user && vm.credAvail">
     <div class="clearfix">
         <button class="btn btn-danger btn-sm float-right" ng-disabled="vm.updating" ng-click="vm.logout()"><span>Logout</span></button>
         <span class="font-weight-bold">{{vm.user.email}}</span>
     </div>
 </div>
 <br/>
-<div class="card" ng-if="!vm.user && !vm.checkCred">
+<div class="card" ng-if="!vm.checkCred &&  !vm.credAvail">
     <div class="card-header font-weight-bold">
         Quant Black Login Required
     </div>
@@ -43,7 +43,7 @@
         </form>
     </div>
 </div>
-<div class="card" ng-if="vm.user">
+<div class="card" ng-if="vm.user && vm.credAvail">
     <div class="card-header font-weight-bold">
         MT4 Controller
     </div>
