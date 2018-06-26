@@ -50,10 +50,8 @@ module.exports.setAuthStateChanged = function() {
             //get qbManager settings
             firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager').once('value').then(function(snapshot) {
                 console.log("Downloaded QB Manager Settings");
-                var settings = snapshot.val();
 
-
-                if(!settings) {
+                if(!snapshot.exists()) {
                     dataObj.data.qbManagerSettings = {
                         strategies: {},
                         instances: {},
@@ -61,7 +59,7 @@ module.exports.setAuthStateChanged = function() {
                     };
                 }
                 else
-                    dataObj.data.qbManagerSettings = settings;
+                    dataObj.data.qbManagerSettings = snapshot.val();
 
                 if(!dataObj.data.qbManagerSettings.hasOwnProperty('instances'))
                     dataObj.data.qbManagerSettings.instances = {};
