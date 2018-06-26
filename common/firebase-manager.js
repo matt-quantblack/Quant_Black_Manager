@@ -308,10 +308,10 @@ function strategyAdded(snapshot) {
     console.log('Strategy added.');
     var strategy = snapshot.val();
 
+    var dest = './downloaded_strategies/'+ strategy.filename;
+
     //only download this if it isn't already in the strateies list
-    if(dataObj.data && dataObj.data.hasOwnProperty('qbManagerSettings') &&
-        dataObj.data.qbManagerSettings.hasOwnProperty('strategies') &&
-        !dataObj.data.qbManagerSettings.strategies.hasOwnProperty(snapshot.key)) {
+    if(!fs.existsSync(dest)) {
         console.log('Adding new strategy ' + snapshot.key);
         //add to the local qb manager variable
         dataObj.data.qbManagerSettings.strategies[snapshot.key] = strategy;

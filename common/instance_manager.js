@@ -12,7 +12,10 @@ function createChartFile(dir, eaNo, symbol, period, ea_name, username, password)
     var filename = 'common/chart_profile.txt';
 
     fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) throw err;
+        if (err) {
+            err_log.log(err);
+            return;
+        }
         data = data.replace('<!--id-->', id);
         data = data.replace('<!--symbol-->', symbol);
         data = data.replace('<!--period-->', period);
