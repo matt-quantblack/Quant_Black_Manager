@@ -82,7 +82,7 @@ module.exports.changeServerPassword = function(req, res) {
 
     try {
 
-        var child = require('child_process').spawn('C:\\Windows\\System32\\net', ['user', 'Administrator', '"' + newPassword + '"']);
+        var child = require('child_process').spawn('C:\\Windows\\System32\\net', ['user', 'Administrator', newPassword]);
 
 
         child.on('error', function (err) {
