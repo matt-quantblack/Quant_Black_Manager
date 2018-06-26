@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/firebase-manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/firebase-manager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard/dashboard.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard/dashboard.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard/dashboard.view.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard/dashboard.view.html" afterDir="false" />
-    </list>
+    <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,20 +19,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
+            <state relative-caret-position="680">
+              <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
+      <file leaf-file-name="firebase-data.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/firebase-data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="306" column="87" selection-start-line="306" selection-start-column="87" selection-end-line="306" selection-end-column="87" />
+            <state relative-caret-position="17">
+              <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -46,17 +40,17 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="537">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.controller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dashboard.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/dashboard/dashboard.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+            <state relative-caret-position="530">
+              <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -143,9 +137,9 @@
         <option value="$PROJECT_DIR$/api/api.js" />
         <option value="$PROJECT_DIR$/common/instance_manager.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.view.html" />
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.controller.js" />
+        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
       </list>
     </option>
   </component>
@@ -282,7 +276,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81029000" />
+    <option name="totallyTimeSpent" value="81778000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -295,6 +289,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.20231824" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32985386" />
@@ -498,7 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qb_cred.dat" />
     <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7845">
@@ -508,13 +502,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/images/QUANT_BLACK_trans_small.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/firebase-data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -557,20 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="306" column="87" selection-start-line="306" selection-start-column="87" selection-end-line="306" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/dashboard/dashboard.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -578,10 +551,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/qb_cred.dat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/dashboard/dashboard.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+        <state relative-caret-position="530">
+          <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/firebase-data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
         </state>
       </provider>
     </entry>
