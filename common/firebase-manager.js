@@ -361,7 +361,7 @@ function strategyAdded(snapshot) {
 
     var strategy = snapshot.val();
 
-    var dir = './downloaded_strategies';
+    var dir = __dirname + '../downloaded_strategies';
 
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
@@ -391,7 +391,7 @@ function strategyAddedToInstance(strategy) {
 
         //the ea should already be downloaded
         console.log("Setting up " + strategy.strategyKey  + " on instance");
-        var dest = './downloaded_strategies/' + strategy.filename + '.ex4';
+        var dest = __dirname + '../downloaded_strategies/' + strategy.filename + '.ex4';
         eaDownloaded(strategy.strategyKey, dest, 'MQL4\\Experts\\' + strategy.filename + '.ex4');
     }
 
@@ -407,7 +407,7 @@ function strategyChange(snapshot) {
         var existingStrategy = dataObj.data.qbManagerSettings.strategies[strategyUpdate.strategyKey];
         if(existingStrategy.version < strategyUpdate.version)
         {
-            var dest = './downloaded_strategies/'+ strategyUpdate.filename + '.ex4';
+            var dest = __dirname + '../downloaded_strategies/'+ strategyUpdate.filename + '.ex4';
 
             var updates = {};
             updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/strategies/' + strategyUpdate.strategyKey + '/version'] = strategyUpdate.version;
