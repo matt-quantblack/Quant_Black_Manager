@@ -9,7 +9,7 @@ function createChartFile(dir, eaNo, symbol, period, ea_name, username, password)
     var id = 131742006375446389 + eaNo;
 
     // Read the file and change its contents
-    var filename = 'common/chart_profile.txt';
+    var filename = '../common/chart_profile.txt';
 
     fs.readFile(filename, 'utf8', function(err, data) {
         if (err) {

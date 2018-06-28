@@ -27,8 +27,8 @@
       <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
-              <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+            <state relative-caret-position="714">
+              <caret line="361" column="22" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -139,10 +139,10 @@
         <option value="$PROJECT_DIR$/common/error_logger.js" />
         <option value="$PROJECT_DIR$/api/api.js" />
         <option value="$PROJECT_DIR$/common/instance_manager.js" />
-        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.controller.js" />
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.view.html" />
+        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -201,6 +201,11 @@
             <path>
               <item name="QB_Manager" type="b2602c69:ProjectViewProjectNode" />
               <item name="QB_Manager" type="462c0819:PsiDirectoryNode" />
+              <item name="ea_downloader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="QB_Manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QB_Manager" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -251,12 +256,12 @@
       <updated>1529572886330</updated>
       <workItem from="1529572916983" duration="65822000" />
       <workItem from="1530142449190" duration="626000" />
-      <workItem from="1530143091541" duration="824000" />
+      <workItem from="1530143091541" duration="1105000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85931000" />
+    <option name="totallyTimeSpent" value="86212000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -270,7 +275,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2528978" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.2528978" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32985386" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -278,7 +283,7 @@
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32985386" />
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32881" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32881" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -589,8 +594,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+        <state relative-caret-position="714">
+          <caret line="361" column="22" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
         </state>
       </provider>
     </entry>
