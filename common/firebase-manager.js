@@ -235,6 +235,33 @@ module.exports.setAuthStateChanged = function() {
                                     })
                             });
 
+                            //then listen for any strategies that have been removeed from this instance
+                            dataObj.data.listeners.push({
+                                path: dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas/' + ieaSnap.key,
+                                type: 'child_removed',
+                                listener:
+                                    firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instance_eas/' + ieaSnap.key).on('child_removed', function(stratSnap) {
+
+                                        var index = -1;
+                                        var i=0;
+                                        dataObj.data.qbManagerSettings.instance_eas[ieaSnap.key].forEach(function(val) {
+                                            if(val.strategyKey == stratSnap.val().strategyKey)
+                                                index = i;
+                                            i++;
+                                        });
+
+                                        if(index > -1) {
+                                            dataObj.data.qbManagerSettings.instance_eas[ieaSnap.key].splice(index, 1);
+                                            if (dataObj.data.qbManagerSettings.instances[ieaSnap.key].started) {
+                                                console.log('Strategy removed restart required');
+                                                firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + ieaSnap.key + '/requires_restart').set(true);
+                                            }
+                                            else
+                                                console.log('Strategy removed but no restart required because MT4 not running');
+                                        }
+                                    })
+                            });
+
                         })
                 });
 
