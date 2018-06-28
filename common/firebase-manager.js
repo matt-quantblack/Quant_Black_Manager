@@ -353,7 +353,13 @@ function strategyAdded(snapshot) {
 
     var strategy = snapshot.val();
 
-    var dest = './downloaded_strategies/'+ strategy.filename + '.ex4';
+    var dir = './downloaded_strategies';
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    var dest = dir + '/'+ strategy.filename + '.ex4';
 
     //only download this if it isn't already in the strateies list
     if(!fs.existsSync(dest)) {
