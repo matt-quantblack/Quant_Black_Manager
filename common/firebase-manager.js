@@ -301,20 +301,17 @@ function eaDownloaded(strategyKey, fileLocation, dest, qbManagerUpdate)
                 if(instance_eas) {
                     instance_eas.forEach(function (val) {
                         if (instance.hasOwnProperty('mt4DataPath')) {
-                            //delete any old versions of this strategy
+                            //copy over old versions of this strategy
                             var path = instance.mt4DataPath + 'MQL4\\Experts\\' + val.filename + '.ex4';
-                            if (val.strategyKey == strategyKey) {
+                            try {
+                                //copy across the new one
+                                fs.copyFileSync(fileLocation, path);
+                                console.log('Downloaded to ' + path);
 
-                                try {
-                                    //copy across the new one
-                                    fs.copyFileSync(fileLocation, path);
-                                    console.log('Downloaded to ' + path);
-
-                                    updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart'] = true;
-                                }
-                                catch (err) {
-                                    err_log.log("Could not copy " + instance.mt4DataPath + dest + ": " + err);
-                                }
+                                updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart'] = true;
+                            }
+                            catch (err) {
+                                err_log.log("Could not copy " + instance.mt4DataPath + dest + ": " + err);
                             }
 
                         }
