@@ -433,7 +433,7 @@ function restartInstance(key)
 
     //stop then start the instance
     if(dataObj.data.qbManagerSettings.instances.hasOwnProperty(key)) {
+        dataObj.data.qbManagerSettings.instances[key].is_restarting = true;
         im.stopInstance(key, dataObj.data.qbManagerSettings.instances[key]);
-        im.startInstance(key, dataObj.data.qbManagerSettings.instances[key]);
     }
 }

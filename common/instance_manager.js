@@ -97,6 +97,10 @@ module.exports.startInstance = function(key, instance) {
 
             child.on('close', function (code) {
                 console.log('MT4 exited ' + instance.mt4Path + " (" + code + ")");
+                if(fbManager.data.qbManagerSettings.instances[key].is_restarting) {
+                    thisModule.startInstance(key, fbManager.data.qbManagerSettings.instances[key]);
+                    fbManager.data.qbManagerSettings.instances[key].is_restarting = false;
+                }
                 fbManager.updateInstanceState(key, 'started', false);
             });
 

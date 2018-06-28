@@ -46,7 +46,7 @@ name=main
 
 <expert>
 name=<!--ea_name-->
-flags=339
+flags=343
 window_num=0
 <inputs>
 QB_Username=<!--username-->
