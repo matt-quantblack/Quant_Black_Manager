@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="" />
+    <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/common/firebase-manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/firebase-manager.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,8 +29,8 @@
       <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="314" column="29" selection-start-line="314" selection-start-column="29" selection-end-line="314" selection-end-column="29" />
+            <state relative-caret-position="282">
+              <caret line="363" column="28" selection-start-line="363" selection-start-column="28" selection-end-line="363" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -86,8 +88,8 @@
       <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="55" lean-forward="true" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+            <state relative-caret-position="187">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -197,11 +199,6 @@
             <path>
               <item name="QB_Manager" type="b2602c69:ProjectViewProjectNode" />
               <item name="QB_Manager" type="462c0819:PsiDirectoryNode" />
-              <item name="downloaded_strategies" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QB_Manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QB_Manager" type="462c0819:PsiDirectoryNode" />
               <item name="ea_downloader" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -257,12 +254,12 @@
       <updated>1529572886330</updated>
       <workItem from="1529572916983" duration="65822000" />
       <workItem from="1530142449190" duration="626000" />
-      <workItem from="1530143091541" duration="3036000" />
+      <workItem from="1530143091541" duration="3643000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88143000" />
+    <option name="totallyTimeSpent" value="88750000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,15 +588,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="55" lean-forward="true" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+        <state relative-caret-position="187">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="314" column="29" selection-start-line="314" selection-start-column="29" selection-end-line="314" selection-end-column="29" />
+        <state relative-caret-position="282">
+          <caret line="363" column="28" selection-start-line="363" selection-start-column="28" selection-end-line="363" selection-end-column="28" />
         </state>
       </provider>
     </entry>
