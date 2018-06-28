@@ -27,8 +27,8 @@
       <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-660">
-              <caret line="361" column="22" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
+            <state relative-caret-position="427">
+              <caret line="314" column="29" selection-start-line="314" selection-start-column="29" selection-end-line="314" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -116,6 +116,7 @@
       <find>panel</find>
       <find>ea_name</find>
       <find>profiles</find>
+      <find>requires_restart</find>
     </findStrings>
     <replaceStrings>
       <replace>filename</replace>
@@ -141,9 +142,9 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.controller.js" />
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.view.html" />
-        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/common/instance_manager.js" />
+        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
       </list>
     </option>
   </component>
@@ -256,12 +257,12 @@
       <updated>1529572886330</updated>
       <workItem from="1529572916983" duration="65822000" />
       <workItem from="1530142449190" duration="626000" />
-      <workItem from="1530143091541" duration="2080000" />
+      <workItem from="1530143091541" duration="3036000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87187000" />
+    <option name="totallyTimeSpent" value="88143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -274,9 +275,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2528978" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.2528978" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32985386" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -284,7 +284,7 @@
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32985386" />
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32881" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32881" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -598,8 +598,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-660">
-          <caret line="361" column="22" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
+        <state relative-caret-position="427">
+          <caret line="314" column="29" selection-start-line="314" selection-start-column="29" selection-end-line="314" selection-end-column="29" />
         </state>
       </provider>
     </entry>

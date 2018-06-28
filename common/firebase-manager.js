@@ -301,18 +301,29 @@ function eaDownloaded(strategyKey, fileLocation, dest, qbManagerUpdate)
                 if(instance_eas) {
                     instance_eas.forEach(function (val) {
                         if (instance.hasOwnProperty('mt4DataPath')) {
-                            //copy over old versions of this strategy
-                            var path = instance.mt4DataPath + 'MQL4\\Experts\\' + val.filename + '.ex4';
-                            try {
-                                //copy across the new one
-                                fs.copyFileSync(fileLocation, path);
-                                console.log('Downloaded to ' + path);
 
-                                updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart'] = true;
+                            if(fs.existsSync(instance.mt4DataPath)) {
+
+                                //copy over old versions of this strategy
+                                var path = instance.mt4DataPath + 'MQL4\\Experts\\' + val.filename + '.ex4';
+                                try {
+                                    //copy across the new one
+                                    fs.copyFileSync(fileLocation, path);
+                                    console.log('Downloaded to ' + path);
+
+                                    if(instance.started) {
+                                        updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart'] = true;
+                                        console.log("Instance running so restart required.")
+                                    }
+                                    else
+                                        console.log("Instance stopped, no restart required.")
+                                }
+                                catch (err) {
+                                    err_log.log("Could not copy " + instance.mt4DataPath + dest + ": " + err);
+                                }
                             }
-                            catch (err) {
-                                err_log.log("Could not copy " + instance.mt4DataPath + dest + ": " + err);
-                            }
+                            else
+                                err_log.log("MT4 Data Path " + instance.mt4DataPath + " does not exist.");
 
                         }
                     });
