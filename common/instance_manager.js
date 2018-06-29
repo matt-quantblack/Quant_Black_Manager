@@ -2,16 +2,23 @@ var fs = require('fs');
 var fbManager = require('../common/firebase-manager');
 var err_log = require('../common/error_logger');
 
-function createChartFile(dir, eaNo, symbol, period, filename, username, password) {
-
-
-    var ea_name = null;
+function getEaName (filename)
+{
 
     if(filename) {
         var parts = filename.split('.');
         if (parts.length == 2)
-            ea_name = parts[0];
+            return parts[0];
     }
+
+    return null;
+}
+
+function createChartFile(dir, eaNo, symbol, period, filename, username, password) {
+
+    var ea_name = null;
+    if(filename)
+        ea_name = getEaName(filename);
     if(!ea_name)
         return;
 

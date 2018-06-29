@@ -337,7 +337,7 @@ function eaDownloaded(strategyKey, fileLocation, dest, qbManagerUpdate)
 
                                 if(strategyKey == val.strategyKey) {
                                     //copy over old versions of this strategy
-                                    var path = instance.mt4DataPath + 'MQL4\\Experts\\' + val.filename + '.ex4';
+                                    var path = instance.mt4DataPath + 'MQL4\\Experts\\' + val.filename;
                                     try {
                                         //copy across the new one
                                         fs.copyFileSync(fileLocation, path);
@@ -381,7 +381,7 @@ function downloadEA(dest, key, strategy, qbManagerUpdate) {
         response.pipe(file);
         file.on('finish', function() {
             file.close(function() {
-                eaDownloaded(key, dest, 'MQL4\\Experts\\' + strategy.filename + '.ex4', qbManagerUpdate);
+                eaDownloaded(key, dest, 'MQL4\\Experts\\' + strategy.filename, qbManagerUpdate);
             });  // close() is async, call cb after close completes.
         });
     }).on('error', function(err) { // Handle errors
@@ -400,7 +400,7 @@ function strategyAdded(snapshot) {
         fs.mkdirSync(dir);
     }
 
-    var dest = dir + '/'+ strategy.filename + '.ex4';
+    var dest = dir + '/'+ strategy.filename;
 
     //only download this if it isn't already in the strateies list
     if(!fs.existsSync(dest)) {
@@ -424,8 +424,8 @@ function strategyAddedToInstance(strategy) {
 
         //the ea should already be downloaded
         console.log("Setting up " + strategy.strategyKey  + " on instance");
-        var dest = __dirname + '/../downloaded_strategies/' + strategy.filename + '.ex4';
-        eaDownloaded(strategy.strategyKey, dest, 'MQL4\\Experts\\' + strategy.filename + '.ex4');
+        var dest = __dirname + '/../downloaded_strategies/' + strategy.filename;
+        eaDownloaded(strategy.strategyKey, dest, 'MQL4\\Experts\\' + strategy.filename);
     }
 
 }
@@ -440,7 +440,7 @@ function strategyChange(snapshot) {
         var existingStrategy = dataObj.data.qbManagerSettings.strategies[strategyUpdate.strategyKey];
         if(existingStrategy.version < strategyUpdate.version)
         {
-            var dest = __dirname + '/../downloaded_strategies/'+ strategyUpdate.filename + '.ex4';
+            var dest = __dirname + '/../downloaded_strategies/'+ strategyUpdate.filename;
 
             var updates = {};
             updates[dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/strategies/' + strategyUpdate.strategyKey + '/version'] = strategyUpdate.version;
