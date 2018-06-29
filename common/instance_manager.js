@@ -2,7 +2,18 @@ var fs = require('fs');
 var fbManager = require('../common/firebase-manager');
 var err_log = require('../common/error_logger');
 
-function createChartFile(dir, eaNo, symbol, period, ea_name, username, password) {
+function createChartFile(dir, eaNo, symbol, period, filename, username, password) {
+
+
+    var ea_name = null;
+
+    if(filename) {
+        var parts = filename.split('.');
+        if (parts.length == 2)
+            ea_name = parts[0];
+    }
+    if(!ea_name)
+        return;
 
     console.log('Setting up EA ' + ea_name + " on " + symbol + ", " + period);
 
