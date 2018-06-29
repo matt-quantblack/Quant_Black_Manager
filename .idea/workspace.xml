@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="" />
+    <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/common/firebase-manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/firebase-manager.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="251" selection-start-line="251" selection-end-line="251" />
+            <state relative-caret-position="282">
+              <caret line="436" column="68" selection-start-line="436" selection-start-column="68" selection-end-line="436" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -64,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/public/dashboard/dashboard.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="104" column="38" lean-forward="true" selection-start-line="104" selection-start-column="38" selection-end-line="104" selection-end-column="38" />
+              <caret line="104" column="38" selection-start-line="104" selection-start-column="38" selection-end-line="104" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -92,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+            <state relative-caret-position="-119">
+              <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -119,6 +121,7 @@
       <find>requires_restart</find>
       <find>downloaded_strategies'</find>
       <find>downloaded_strategies</find>
+      <find>.ex4</find>
     </findStrings>
     <replaceStrings>
       <replace>filename</replace>
@@ -145,8 +148,8 @@
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.view.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/common/chart_profile.txt" />
-        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
         <option value="$PROJECT_DIR$/common/instance_manager.js" />
+        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
       </list>
     </option>
   </component>
@@ -254,12 +257,12 @@
       <updated>1529572886330</updated>
       <workItem from="1529572916983" duration="65822000" />
       <workItem from="1530142449190" duration="626000" />
-      <workItem from="1530143091541" duration="12121000" />
+      <workItem from="1530143091541" duration="13837000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97228000" />
+    <option name="totallyTimeSpent" value="98944000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -579,24 +582,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="251" selection-start-line="251" selection-end-line="251" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/dashboard/dashboard.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="104" column="38" lean-forward="true" selection-start-line="104" selection-start-column="38" selection-end-line="104" selection-end-column="38" />
+          <caret line="104" column="38" selection-start-line="104" selection-start-column="38" selection-end-line="104" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        <state relative-caret-position="-119">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="436" column="68" selection-start-line="436" selection-start-column="68" selection-end-line="436" selection-end-column="68" />
         </state>
       </provider>
     </entry>

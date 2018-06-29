@@ -81,6 +81,7 @@ module.exports.setAuthStateChanged = function() {
                         dataObj.data.qbManagerSettings.strategies[strategySnapshot.key] = strategySnapshot.val();
 
                         if(dataObj.data.qbManagerSettings.strategies[strategySnapshot.key].autoUpdate) {
+                            console.log('Auto update set for ' + strategySnapshot.key);
                             dataObj.data.listeners.push({
                                 path: 'strategies/' + strategySnapshot.key + '/versions',
                                 type: 'child_added',
@@ -432,6 +433,8 @@ function strategyAddedToInstance(strategy) {
 
 function strategyChange(snapshot) {
     var strategyUpdate = snapshot.val();
+
+    console.log('Checking version for ' + strategyUpdate.strategyKey);
 
     if(dataObj.data && dataObj.data.hasOwnProperty('qbManagerSettings') &&
         dataObj.data.qbManagerSettings.hasOwnProperty('strategies') &&

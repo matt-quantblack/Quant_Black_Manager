@@ -139,6 +139,7 @@
             vm.updating = true;
             vm.instance.started = false;
             vm.instance.active = false;
+            vm.instance.hide = false;
             var key = firebase.database().ref(vm.user.uid + '/qb_manager/instances').push().getKey();
             firebase.database().ref(vm.user.uid + '/qb_manager/instances/' + key).set(vm.instance).then(function() {
                 vm.instance.broker = "";
