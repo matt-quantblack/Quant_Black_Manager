@@ -57,17 +57,17 @@
             if(user) {
                 vm.user = user;
 
-                firebase.database().ref(user.uid + '/qb_manager/instances').on('child_added', function (snapshot) {
+                firebase.database().ref('user_data/' + user.uid + '/qb_manager/instances').on('child_added', function (snapshot) {
                     vm.instances[snapshot.key] = snapshot.val();
 
-                    firebase.database().ref(user.uid + '/qb_manager/instances/' + snapshot.key).on('child_changed', function (snap) {
+                    firebase.database().ref('user_data/' + user.uid + '/qb_manager/instances/' + snapshot.key).on('child_changed', function (snap) {
                         vm.instances[snapshot.key][snap.key] = snap.val();
                         if (!$scope.$$phase) $scope.$apply();
                     });
                     if (!$scope.$$phase) $scope.$apply();
                 });
 
-                firebase.database().ref(user.uid + '/qb_manager/instances').on('child_removed', function(snapshot) {
+                firebase.database().ref('user_data/' + user.uid + '/qb_manager/instances').on('child_removed', function(snapshot) {
                     if(vm.instances.hasOwnProperty(snapshot.key)) {
                         delete vm.instances[snapshot.key];
                         if (!$scope.$$phase) $scope.$apply();
@@ -122,17 +122,17 @@
 
         vm.stop = function(key) {
             vm.updating = true;
-            firebase.database().ref(vm.user.uid + '/qb_manager/instances/' + key + '/active').set(false).then(doneUpdate, doneUpdate);
+            firebase.database().ref('user_data/' + vm.user.uid + '/qb_manager/instances/' + key + '/active').set(false).then(doneUpdate, doneUpdate);
         };
 
         vm.launch = function(key) {
             vm.updating = true;
-            firebase.database().ref(vm.user.uid + '/qb_manager/instances/' + key + '/active').set(true).then(doneUpdate, doneUpdate);
+            firebase.database().ref('user_data/' + vm.user.uid + '/qb_manager/instances/' + key + '/active').set(true).then(doneUpdate, doneUpdate);
         };
 
         vm.update = function(key, field, value) {
             vm.updating = true;
-            firebase.database().ref(vm.user.uid + '/qb_manager/instances/' + key + '/' + field).set(value).then(doneUpdate, doneUpdate);
+            firebase.database().ref('user_data/' + vm.user.uid + '/qb_manager/instances/' + key + '/' + field).set(value).then(doneUpdate, doneUpdate);
         };
 
         vm.addNew = function() {
@@ -140,8 +140,8 @@
             vm.instance.started = false;
             vm.instance.active = false;
             vm.instance.hide = false;
-            var key = firebase.database().ref(vm.user.uid + '/qb_manager/instances').push().getKey();
-            firebase.database().ref(vm.user.uid + '/qb_manager/instances/' + key).set(vm.instance).then(function() {
+            var key = firebase.database().ref('user_data/' + vm.user.uid + '/qb_manager/instances').push().getKey();
+            firebase.database().ref('user_data/' + vm.user.uid + '/qb_manager/instances/' + key).set(vm.instance).then(function() {
                 vm.instance.broker = "";
                 vm.instance.type = "";
                 vm.instance.description = "";
@@ -155,7 +155,7 @@
         vm.remove = function(key) {
             var r = confirm("Are you sure you want to delete this MT4 Instance?");
             if (r == true) {
-                firebase.database().ref(vm.user.uid + '/qb_manager/instances/' + key).remove();
+                firebase.database().ref('user_data/' + vm.user.uid + '/qb_manager/instances/' + key).remove();
             }
         };
 

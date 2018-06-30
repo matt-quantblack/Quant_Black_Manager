@@ -4,7 +4,7 @@ var data = {
     user: null,
     cred: null,
     listeners: [],
-    userDataPath: ""
+    userDataPath: 'user_data/'
 };
 
 module.exports.data = data;
