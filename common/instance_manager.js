@@ -79,6 +79,19 @@ module.exports.createProfile = function(dataPath, instanceEAs) {
 
        if(instanceEAs) {
            instanceEAs.forEach(function (ea) {
+
+               //copy across the downloaded EA's just to make sure version is current
+               var fileLocation = __dirname + '/../downloaded_strategies/' + ea.filename;
+               var path = dataPath + 'MQL4\\Experts\\' + ea.filename;
+               try {
+                   //copy across the new one
+                   fs.copyFileSync(fileLocation, path);
+                   console.log('Synced to ' + path);
+               }
+               catch(err) {
+                   err_log.log("Error copying file: " + err);
+               }
+
                createChartFile(dir, eaNo++, ea.symbol, ea.period, ea.filename, uname, pword);
            });
        }
