@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/common/firebase-manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/firebase-manager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/instance_manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/instance_manager.js" afterDir="false" />
-    </list>
+    <list default="true" id="b6e9e2fe-7e72-4106-9da0-02f348758cbc" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="517" column="119" selection-start-line="517" selection-start-column="119" selection-end-line="517" selection-end-column="119" />
+            <state relative-caret-position="323">
+              <caret line="61" column="88" selection-start-line="61" selection-start-column="88" selection-end-line="61" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -49,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/common/chart_profile.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="397">
-              <caret line="49" column="12" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
+              <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -77,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="109" column="60" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
+            <state relative-caret-position="125">
+              <caret line="109" column="42" selection-start-line="109" selection-start-column="42" selection-end-line="109" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -133,8 +130,8 @@
         <option value="$PROJECT_DIR$/common/chart_profile.txt" />
         <option value="$PROJECT_DIR$/common/firebase-data.js" />
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.controller.js" />
-        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
         <option value="$PROJECT_DIR$/common/instance_manager.js" />
+        <option value="$PROJECT_DIR$/common/firebase-manager.js" />
       </list>
     </option>
   </component>
@@ -183,6 +180,11 @@
               <item name="QB_Manager" type="b2602c69:ProjectViewProjectNode" />
               <item name="QB_Manager" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="QB_Manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QB_Manager" type="462c0819:PsiDirectoryNode" />
+              <item name="downloaded_strategies" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="QB_Manager" type="b2602c69:ProjectViewProjectNode" />
@@ -248,12 +250,12 @@
       <updated>1529572886330</updated>
       <workItem from="1529572916983" duration="65822000" />
       <workItem from="1530142449190" duration="626000" />
-      <workItem from="1530143091541" duration="17643000" />
+      <workItem from="1530143091541" duration="18173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102750000" />
+    <option name="totallyTimeSpent" value="103280000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -266,9 +268,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2528978" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.2528978" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32985386" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -276,7 +277,7 @@
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32985386" />
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32881" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32881" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -521,7 +522,7 @@
     <entry file="file://$PROJECT_DIR$/common/chart_profile.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
-          <caret line="49" column="12" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
+          <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -577,17 +578,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
+    <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="517" column="119" selection-start-line="517" selection-start-column="119" selection-end-line="517" selection-end-column="119" />
+        <state relative-caret-position="125">
+          <caret line="109" column="42" selection-start-line="109" selection-start-column="42" selection-end-line="109" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
+    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="109" column="60" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
+        <state relative-caret-position="323">
+          <caret line="61" column="88" selection-start-line="61" selection-start-column="88" selection-end-line="61" selection-end-column="88" />
         </state>
       </provider>
     </entry>

@@ -502,6 +502,16 @@ function libraryUpdated(snapshot) {
                 response.pipe(file);
                 file.on('finish', function() {
                     file.close(function() {
+                        //add libUpdate to qbManagerSettings
+                        dataObj.data.qbManagerSettings.currentLibrary = libUpdate;
+                        firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/currentLibrary').set(libUpdate);
+
+                        //send update required to all instances
+                        Object.keys(dataObj.data.qbManagerSettings.instances).forEach(function(key) {
+                            firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart').set(true);
+                        });
+
+                        console.log('Updating new version for library ');
                     });  // close() is async, call cb after close completes.
                 });
             }).on('error', function(err) { // Handle errors
@@ -509,16 +519,7 @@ function libraryUpdated(snapshot) {
                 err_log.log(err.message);
             });
 
-            //add libUpdate to qbManagerSettings
-            dataObj.data.qbManagerSettings.currentLibrary = libUpdate;
-            firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/currentLibrary').set(libUpdate);
 
-            //send update required to all instances
-            Object.keys(dataObj.data.qbManagerSettings.instances).forEach(function(key) {
-                firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart').set(true);
-            });
-
-            console.log('Updating new version for library ');
 
         }
     }
