@@ -135,6 +135,8 @@ module.exports.startInstance = function(key, instance) {
 
         if(child) {
 
+            fbManager.removeRestart(key);
+
             fbManager.updateInstanceState(key, 'started', true);
             fbManager.updateInstanceState(key, 'active', true);
 

@@ -314,6 +314,11 @@ module.exports.login = function(cred, onSuccess) {
 
 };
 
+module.exports.removeRestart = function(key)
+{
+    firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart').set(null);
+};
+
 module.exports.updateInstanceState = function(key, field, state) {
     if(dataObj.data.user)
         firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/' + field).set(state);
