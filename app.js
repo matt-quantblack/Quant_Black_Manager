@@ -70,14 +70,7 @@ process.on('uncaughtException', (err) => {
     setTimeout(function() {
         console.log("Exiting");
     }, 3000);
-    return console.log(`About to exit with error ${err}`);
+    console.log(`About to exit with error ${err}`);
 });
 
-process.on('exit', function(code) {
-    // call the rest of the code and have it execute after 3 seconds
-    setTimeout(function() {
-        console.log("Exiting");
-    }, 3000);
-    return console.log(`About to exit with code ${code}`);
-});
 

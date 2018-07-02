@@ -498,7 +498,14 @@ function libraryUpdated(snapshot) {
             existingLibrary = dataObj.data.qbManagerSettings.currentLibrary;
         if(!existingLibrary || existingLibrary.version < libUpdate.version)
         {
-            var dest = __dirname + '/../downloaded_strategies/QuantBlackLib.ex4';
+
+            var dir = __dirname + '/../downloaded_strategies';
+
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
+
+            var dest = dir + '/QuantBlackLib.ex4';
 
 
             //download library  - copy will happen on restart
