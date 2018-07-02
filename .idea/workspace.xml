@@ -24,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="firebase-manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="61" column="88" selection-start-line="61" selection-start-column="88" selection-end-line="61" selection-end-column="88" />
+            <state relative-caret-position="163">
+              <caret line="319" column="2" selection-start-line="319" selection-start-column="2" selection-end-line="319" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -74,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="instance_manager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="109" column="42" selection-start-line="109" selection-start-column="42" selection-end-line="109" selection-end-column="42" />
+            <state relative-caret-position="534">
+              <caret line="137" column="41" selection-start-line="137" selection-start-column="41" selection-end-line="137" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -130,8 +130,8 @@
         <option value="$PROJECT_DIR$/common/chart_profile.txt" />
         <option value="$PROJECT_DIR$/common/firebase-data.js" />
         <option value="$PROJECT_DIR$/public/dashboard/dashboard.controller.js" />
-        <option value="$PROJECT_DIR$/common/instance_manager.js" />
         <option value="$PROJECT_DIR$/common/firebase-manager.js" />
+        <option value="$PROJECT_DIR$/common/instance_manager.js" />
       </list>
     </option>
   </component>
@@ -250,12 +250,12 @@
       <updated>1529572886330</updated>
       <workItem from="1529572916983" duration="65822000" />
       <workItem from="1530142449190" duration="626000" />
-      <workItem from="1530143091541" duration="18173000" />
+      <workItem from="1530143091541" duration="18416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103280000" />
+    <option name="totallyTimeSpent" value="103523000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -578,17 +578,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
+    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="109" column="42" selection-start-line="109" selection-start-column="42" selection-end-line="109" selection-end-column="42" />
+        <state relative-caret-position="163">
+          <caret line="319" column="2" selection-start-line="319" selection-start-column="2" selection-end-line="319" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/firebase-manager.js">
+    <entry file="file://$PROJECT_DIR$/common/instance_manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="61" column="88" selection-start-line="61" selection-start-column="88" selection-end-line="61" selection-end-column="88" />
+        <state relative-caret-position="534">
+          <caret line="137" column="41" selection-start-line="137" selection-start-column="41" selection-end-line="137" selection-end-column="41" />
         </state>
       </provider>
     </entry>
