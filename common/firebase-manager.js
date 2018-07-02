@@ -51,6 +51,28 @@ module.exports.setAuthStateChanged = function() {
             firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager').once('value').then(function(snapshot) {
                 console.log("Downloaded QB Manager Settings");
 
+
+                //listen for any updates to the library
+                dataObj.data.listeners.push({
+                    path: 'libraries/live',
+                    type: 'child_added',
+                    listener:
+                        firebase.database().ref('libraries/live').on('child_added', libraryUpdated)
+                });
+                firebase.database().ref('libraries/test_access/' + dataObj.data.user.uid).once('value').then(function(accSnap) {
+                   if(accSnap.exists())
+                   {
+                       dataObj.data.listeners.push({
+                           path: 'libraries/test',
+                           type: 'child_added',
+                           listener:
+                               firebase.database().ref('libraries/test').on('child_added', libraryUpdated)
+                       });
+                   }
+                });
+
+
+
                 if(!snapshot.exists()) {
                     dataObj.data.qbManagerSettings = {
                         strategies: {},
@@ -452,6 +474,52 @@ function strategyChange(snapshot) {
 
             console.log('Updating new version for strategy ' + strategyUpdate.strategyKey);
             downloadEA(dest, strategyUpdate.strategyKey, strategyUpdate, updates);
+        }
+    }
+
+}
+
+function libraryUpdated(snapshot) {
+    var libUpdate = snapshot.val();
+
+    console.log('Checking library version');
+
+    if(dataObj.data && dataObj.data.hasOwnProperty('qbManagerSettings'))
+    {
+        var existingLibrary = null;
+        if(dataObj.data.qbManagerSettings.hasOwnProperty('currentLibrary'))
+            existingLibrary = dataObj.data.qbManagerSettings.currentLibrary;
+        if(!existingLibrary || existingLibrary.version < libUpdate.version)
+        {
+            var dest = __dirname + '/../downloaded_strategies/QuantBlackLib.ex4';
+
+
+            //download library  - copy will happen on restart
+            //create a file stream in a temp location
+            var file = fs.createWriteStream(dest);
+
+            https.get(libUpdate.url, function(response) {
+                response.pipe(file);
+                file.on('finish', function() {
+                    file.close(function() {
+                    });  // close() is async, call cb after close completes.
+                });
+            }).on('error', function(err) { // Handle errors
+                fs.unlink(file); // Delete the file async. (But we don't check the result)
+                err_log.log(err.message);
+            });
+
+            //add libUpdate to qbManagerSettings
+            dataObj.data.qbManagerSettings.currentLibrary = libUpdate;
+            firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/currentLibrary').set(libUpdate);
+
+            //send update required to all instances
+            Object.keys(dataObj.data.qbManagerSettings.instances).forEach(function(key) {
+                firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart').set(true);
+            });
+
+            console.log('Updating new version for library ');
+
         }
     }
 

@@ -104,6 +104,19 @@ module.exports.startInstance = function(key, instance) {
     var thisModule = this;
     var dataPath = instance.mt4DataPath;
 
+
+    //copy across the current library file
+    var fileLocation = __dirname + '/../downloaded_strategies/QuantBlackLib.ex4';
+    var path = dataPath + 'MQL4\\Libraries\\QuantBlackLib.ex4';
+    try {
+        //copy across the new one
+        fs.copyFileSync(fileLocation, path);
+        console.log('Synced to ' + path);
+    }
+    catch(err) {
+        err_log.log("Error copying file: " + err);
+    }
+
     fbManager.getInstanceEAs(key, function(instanceEAs) {
 
         thisModule.createProfile(dataPath, instanceEAs);
