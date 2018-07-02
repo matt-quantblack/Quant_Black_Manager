@@ -69,6 +69,8 @@ module.exports.setAuthStateChanged = function() {
                                firebase.database().ref('libraries/test').on('child_added', libraryUpdated)
                        });
                    }
+                }, function(err) {
+                    //doesn't have access
                 });
 
 
