@@ -513,7 +513,8 @@ function libraryUpdated(snapshot) {
 
                         //send update required to all instances
                         Object.keys(dataObj.data.qbManagerSettings.instances).forEach(function(key) {
-                            firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart').set(true);
+                            if(dataObj.data.qbManagerSettings.instances[key].started)
+                                firebase.database().ref(dataObj.data.userDataPath + dataObj.data.user.uid + '/qb_manager/instances/' + key + '/requires_restart').set(true);
                         });
 
                         console.log('Updating new version for library ');
